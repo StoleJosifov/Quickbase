@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Backend.Services;
 
 namespace Api.Controllers
@@ -24,15 +25,17 @@ namespace Api.Controllers
         [HttpGet]
         public List<Tuple<string, int>> Get()
         {
-            var apiTask = _apiService.GetCountryPopulationsAsync();
-            apiTask.Wait();
-            var apiResult = apiTask.Result;
-
             var dbTask = _dbService.GetCountryPopulationsAsync();
             dbTask.Wait();
             var dbResult = dbTask.Result;
 
-            return apiResult;
+            var apiTask = _apiService.GetCountryPopulationsAsync();
+            apiTask.Wait();
+            var apiResult = apiTask.Result;
+
+            var results = dbResult.Union(apiResult,new CountryEqualityComparer());
+
+            return results.ToList();
         }
     }
 }
