@@ -3,7 +3,6 @@ using System.Data.Entity;
 using System.Threading.Tasks;
 using Backend.Database.Models;
 using Backend.Database.Repositories;
-using System.Linq;
 
 namespace Backend.Services
 {

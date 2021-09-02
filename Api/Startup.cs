@@ -1,10 +1,10 @@
+using Backend.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Backend.Database;
 using Backend.Database.Repositories;
 using Backend.DomainModels.AutoMapper;
 using Backend.Services;
@@ -23,6 +23,7 @@ namespace Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<DatabaseContext>();
             services.AddScoped<IDataRepository, DataRepository>();
             services.AddScoped<IAutoMapperService, AutoMapperService>();
             services.AddScoped<IApiStatService, ApiStatService>();

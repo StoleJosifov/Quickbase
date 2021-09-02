@@ -9,13 +9,13 @@ namespace Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class CountriesStatisticsController : ControllerBase
     {
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ILogger<CountriesStatisticsController> _logger;
         private readonly IApiStatService _apiService;
         private readonly IDbStatService _dbService;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, IApiStatService apiService, IDbStatService dbStatService )
+        public CountriesStatisticsController(ILogger<CountriesStatisticsController> logger, IApiStatService apiService, IDbStatService dbStatService )
         {
             _logger = logger;
             _apiService = apiService;
