@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "h9IwxcYbH6eS45kkfqb1FpyOgVMEIXqOQbs5/8vxO48m3M9S5bvdcCw84J3K470uLJuZLs7J20RCgPblStXlqQ==",
+  "dgSpecHash": "0rcDp4upK++gfha1r2RGID3uMqODC23pqfqgZm2gG3xCcMwmJhckchs4xjDPmAEjhuozsHQvLWwWQaV50i1G2Q==",
   "success": true,
-  "projectFilePath": "D:\\QuickBase\\interview-demos\\Api\\Api.csproj",
+  "projectFilePath": "D:\\QuickBase\\Quickbase\\Api\\Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Eduard Vaklinov\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\Eduard Vaklinov\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
