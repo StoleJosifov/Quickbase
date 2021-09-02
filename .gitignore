@@ -1,0 +1,24 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+/.vs
+/Api/.vs
+/Api/bin/Debug/
+/Api/packages/
+/Api/obj/Debug
+
+
+/c#/.vs
+/c#/bin/Debug/
+/c#/packages/
+/c#/obj/Debug
+
+.DS_Store
+.vscode
+*.iml
+.idea
+/c#/.vs
+/c#/bin/Debug
+/c#/packages
+/c#/obj/Debug
+
