@@ -1,24 +1,26 @@
 ﻿################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
+.DS_Store
+.vscode
+*.iml
+.idea
 /.vs
+
 /Api/.vs
 /Api/bin/Debug/
 /Api/packages/
-/Api/obj/Debug
+/Api/obj
 
 
 /c#/.vs
 /c#/bin/Debug/
 /c#/packages/
-/c#/obj/Debug
+/c#/obj
 
-.DS_Store
-.vscode
-*.iml
-.idea
-/c#/.vs
-/c#/bin/Debug
-/c#/packages
-/c#/obj/Debug
+
+/Test/.vs
+/Test/bin/Debug
+/Test/packages
+/Test/obj
 

@@ -1,11 +1,17 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Data.SQLite;
 using Backend.Database.Models;
 
 namespace Backend.Database
 {
+    [DbConfigurationType(typeof(SqLiteConfiguration))]
     public class DatabaseContext : DbContext
     {
+        public DatabaseContext(string connString)
+            : base(new SQLiteConnection(connString), true)
+        {
+        }
 
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<Country> Countries { get; set; }

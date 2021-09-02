@@ -7,9 +7,12 @@ namespace Backend.Database.Repositories
     public class DataRepository : IDataRepository
     {
         private readonly DatabaseContext _context;
-        public DataRepository()
+        public DataRepository(DatabaseContext newContext)
         {
-            _context = new DatabaseContext();
+            if (newContext.Database.Exists())
+            {
+                _context = newContext;
+            }
         }
 
         public DbSet<Country> GetCountries()

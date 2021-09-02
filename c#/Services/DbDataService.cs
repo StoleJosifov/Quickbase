@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Backend.Database.Models;
 using Backend.Database.Repositories;
@@ -17,9 +18,17 @@ namespace Backend.Services
 
         public async Task<List<Country>> GetCountries()
         {
-            var query = _dataRepository.GetCountries().Include("States");
-
-            return await query.ToListAsync();
+            try
+            {
+                var query = _dataRepository.GetCountries().FirstOrDefault();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            
+            return new List<Country>();
         }
     }
 }

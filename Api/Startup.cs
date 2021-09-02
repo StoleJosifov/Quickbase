@@ -1,3 +1,5 @@
+using System;
+using System.Data.SQLite;
 using Backend.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -23,8 +25,9 @@ namespace Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<DatabaseContext>();
-            services.AddScoped<IDataRepository, DataRepository>();
+            var connectionString = Configuration.GetConnectionString("DatabaseContext");
+            services.AddSingleton(new DatabaseContext(connectionString));
+            services.AddSingleton<IDataRepository, DataRepository>();
             services.AddScoped<IAutoMapperService, AutoMapperService>();
             services.AddScoped<IApiStatService, ApiStatService>();
             services.AddScoped<IDbStatService, DbStatService>();
@@ -34,6 +37,10 @@ namespace Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api", Version = "v1" });
             });
+        }
+
+        protected void OnConfiguring()
+        {
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
