@@ -6,7 +6,5 @@
         public string CityName { get; set; }
         public int StateId { get; set; }
         public int? Population { get; set; }
-
-        public virtual StateDomain State { get; set; }
     }
 }

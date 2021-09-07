@@ -8,7 +8,7 @@ namespace Api
     {
         public bool Equals(Tuple<string, int> x, Tuple<string, int> y)
         {
-            return x.Item1 == y.Item1;
+            return y != null && x != null && x.Item1 == y.Item1;
         }
 
         // If Equals() returns true for a pair of objects 

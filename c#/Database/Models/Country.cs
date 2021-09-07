@@ -2,7 +2,7 @@
 
 namespace Backend.Database.Models
 {
-    public sealed class Country
+    public class Country
     {
         public Country()
         {
@@ -12,6 +12,6 @@ namespace Backend.Database.Models
         public string CountryName { get; set; }
         public int CountryId { get; set; }
 
-        public ICollection<State> States { get; set; }
+        public virtual ICollection<State> States { get; set; }
     }
 }

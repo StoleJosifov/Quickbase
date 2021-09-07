@@ -21,12 +21,19 @@ namespace Backend.Services
         public async Task<List<Tuple<string, int>>> GetCountryPopulationsAsync()
         {
             var dbCountries = await _dbDataService.GetCountries();
+            List<Tuple<string, int>> newResults = new List<Tuple<string, int>>();
 
-            var results = _autoMapperService.MapToCountryDomain(dbCountries);
+            try
+            {
+                var results = _autoMapperService.MapToCountryDomain(dbCountries).ToList();
+                newResults = results.Select(x => new Tuple<string, int>(x.Name, x.Population)).ToList();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
 
-            var countryPopulation = results.Select(x => new Tuple<string, int>(x.Name, x.Population)).ToList();
-
-            return countryPopulation;
+            return newResults;
         }
     }
 }

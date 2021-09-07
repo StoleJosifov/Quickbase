@@ -21,13 +21,41 @@ namespace Backend.Database
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-            modelBuilder.Entity<Country>().HasKey(c => c.CountryId);
-            modelBuilder.Entity<Country>().HasMany(s => s.States);
+            #region Country
+            modelBuilder.Entity<Country>().ToTable("Country").HasKey(c => c.CountryId);
+            modelBuilder.Entity<Country>().Property(e => e.CountryId)
+                .HasColumnType("int");
+            modelBuilder.Entity<Country>().Property(e => e.CountryName)
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(2000);
+            #endregion
 
-            modelBuilder.Entity<City>().HasKey(c => c.CityId);
+            #region City
+            modelBuilder.Entity<City>().ToTable("City").HasKey(c => c.CityId);
+            modelBuilder.Entity<City>().Property(e => e.CityId)
+                .HasColumnType("int");
+            modelBuilder.Entity<City>().Property(e => e.CityName)
+                .IsRequired()
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(2000);
+            modelBuilder.Entity<City>().Property(e => e.Population).HasColumnType("int").IsOptional();
+            modelBuilder.Entity<City>().Property(e => e.StateId).HasColumnType("int");
+            modelBuilder.Entity<City>().HasRequired(c => c.State).WithMany(s => s.Cities).HasForeignKey(c => c.StateId);
+            #endregion
 
-            modelBuilder.Entity<State>().HasKey(c => c.StateId);
-            modelBuilder.Entity<State>().HasMany(s => s.Cities);
+            #region State
+            modelBuilder.Entity<State>().ToTable("State").HasKey(s => s.StateId);
+            modelBuilder.Entity<State>().Property(e => e.StateId)
+                .HasColumnType("int");
+            modelBuilder.Entity<State>().Property(e => e.CountryId).HasColumnType("int");
+            modelBuilder.Entity<State>().Property(e => e.StateName)
+                .IsRequired()
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(2000);
+            modelBuilder.Entity<State>().HasRequired(c => c.Country).WithMany(s => s.States).HasForeignKey(c => c.CountryId);
+            #endregion
+
+            
         }
     }
 }

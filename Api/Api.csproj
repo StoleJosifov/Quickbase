@@ -19,4 +19,10 @@
     <ProjectReference Include="..\c#\Backend.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="citystatecountry.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
